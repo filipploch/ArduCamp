@@ -44,31 +44,36 @@ void setup() {
 
 }
 
-int changeSensor(int val){
-  if (val == 0){
-      
+int switchSensor(int val){
+
+  switch (val)
+  {
+  case 0:
+    return 0;
+
+  case 1:
+    if (sensorNr == nrOfSensors - 1) {
         return 0;
       }
-  
-  else if (val > 0){
-      if (sensorNr == nrOfSensors - 1) {
-        return 0;
-      }
-      else {
+    else {
         return sensorNr + val;
       }
-  }
-  else {
+
+  case -1:
     if (sensorNr == 0) {
       return nrOfSensors - 1;
     }
     else return sensorNr + val;
+
+  
+  default:
+    return 0;
   }
 }
 
 void changeProgram(int val){
     if (isToChange == true) {
-      sensorNr = changeSensor(val);
+      sensorNr = switchSensor(val);
       lcd.printTemplate(sensors[sensorNr]);
       lcd.printValue(sensors[sensorNr]);
       measureTime = millis();
