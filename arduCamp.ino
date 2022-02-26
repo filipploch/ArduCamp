@@ -109,7 +109,7 @@ void loop() {
     measureTime = millis();
   }
 
-  if (millis() > (bLightTime + 5000)) {
+  if (millis() > (bLightTime + 10000)) {
     lcd.noBacklight();
     isToChange = false;
   }
