@@ -1,7 +1,7 @@
-#include "lcd20x4.h"
-#include "dht22sensor.h"
-#include "dht11sensor.h"
-#include "ds18b20sensor.h"
+#include "lcd20x4.hpp"
+#include "dht22sensor.hpp"
+#include "dht11sensor.hpp"
+#include "ds18b20sensor.hpp"
 
 
 

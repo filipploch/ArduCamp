@@ -1,6 +1,9 @@
-#include "sensor.h";
-#include "DHT.h";
 
+
+#define DHTTYPE DHT22
+#include <Arduino.h>
+#include "sensor.hpp"
+#include "DHT.h"
 using namespace std;
 
 class DHT22Sensor : public Sensor

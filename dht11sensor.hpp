@@ -1,5 +1,6 @@
-#include "sensor.h";
-#include "DHT.h";
+#include "sensor.hpp"
+#include "DHT.h"
+#include <Arduino.h>
 
 using namespace std;
 

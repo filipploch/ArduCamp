@@ -1,10 +1,9 @@
-using namespace std;
 
-#include <Arduino.h>
-#include "dht11sensor.h"
+#include "dht11sensor.hpp"
+
 #define DHTTYPE DHT11
 
-using namespace std;
+// using namespace std;
 
 
 

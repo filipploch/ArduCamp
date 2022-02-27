@@ -1,9 +1,8 @@
-#include "sensor.h";
+#include "sensor.hpp"
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <Arduino.h>
 
-
-using namespace std;
 
 class DS18B20Sensor : public Sensor
 , public OneWire

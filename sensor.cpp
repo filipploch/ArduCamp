@@ -1,10 +1,8 @@
-using namespace std;
 
-#include <Arduino.h>
-#include "sensor.h"
+#include "sensor.hpp"
 
 
-using namespace std;
+// using namespace std;
 
 
 

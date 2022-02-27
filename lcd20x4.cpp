@@ -1,5 +1,4 @@
-#include "lcd20x4.h"
-#include <Arduino.h>
+#include "lcd20x4.hpp"
 
 // we always need a class constructor
 LCD20x4::LCD20x4(uint8_t lcd_Addr)

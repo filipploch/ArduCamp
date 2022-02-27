@@ -1,11 +1,5 @@
-using namespace std;
 
-#include <Arduino.h>
-#include "dht22sensor.h"
-#define DHTTYPE DHT22
-
-using namespace std;
-
+#include "dht22sensor.hpp"
 
 
 DHT22Sensor::DHT22Sensor(String _name, int _pin)
