@@ -10,7 +10,6 @@ class LCD20x4 : public LiquidCrystal_I2C {
     private:
 
     public:
-        // declare the full-fat constructor with default arguments
         LCD20x4(uint8_t lcd_Addr);
         void printHello();
         void printTemplate(Sensor* _sensor);

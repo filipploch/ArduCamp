@@ -2,12 +2,12 @@
 #include "DHT.h"
 #include <Arduino.h>
 
-using namespace std;
+// using namespace std;
 
 class DHT11Sensor : public Sensor
 , public DHT
 {
-    public:
+    private:
         String name;
         int pin;
         static const int nrOfValues = 2;

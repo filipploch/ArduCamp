@@ -1,12 +1,10 @@
 #include "lcd20x4.hpp"
 
-// we always need a class constructor
 LCD20x4::LCD20x4(uint8_t lcd_Addr)
     : LiquidCrystal_I2C(lcd_Addr, 20, 4)
 {
 }
 
-// implement the code
 void LCD20x4::printHello()
 {
   this->setCursor(0, 1);

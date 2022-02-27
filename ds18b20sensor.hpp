@@ -8,7 +8,7 @@ class DS18B20Sensor : public Sensor
 , public OneWire
 , public DallasTemperature
 {
-    public:
+    private:
         String name;
         int pin;
         int idx;
@@ -16,7 +16,6 @@ class DS18B20Sensor : public Sensor
         float value[1];
         String unit[1] = {"*C"};
         String description[1] = {"Temperatura"};
-//        OneWire oneWire(ONE_WIRE_BUS);
         OneWire oneWire;
         DallasTemperature ds18b20sensor;
 

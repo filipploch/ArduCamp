@@ -2,11 +2,11 @@
 #define SENSOR_HPP
 #include <Arduino.h>
 
-using namespace std;
+// using namespace std;
 
 class Sensor
 {
- public:
+ protected:
     String name;
   	String unit;
     float value;
