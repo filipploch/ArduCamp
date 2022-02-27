@@ -1,20 +1,15 @@
 
 #include "sensor.hpp"
 
+Sensor::Sensor() {}
 
-// using namespace std;
+String Sensor::getName() {}
 
+String *Sensor::getDescription() {}
 
+float *Sensor::getValue() {}
 
+String *Sensor::getUnit() {}
 
- Sensor::Sensor(){}
+uint8_t Sensor::getNrOfValues() {}
 
-   String Sensor::getName(){}
-
-   String* Sensor::getDescription(){}
-   
-   float* Sensor::getValue(){}
-
-   String* Sensor::getUnit(){}
-
-   uint8_t Sensor::getNrOfValues(){}

@@ -2,24 +2,20 @@
 #define SENSOR_HPP
 #include <Arduino.h>
 
-// using namespace std;
-
 class Sensor
 {
- protected:
-    String name;
-  	String unit;
-    float value;
+protected:
+  String name;
+  String unit;
+  float value;
 
-  public:
-    Sensor();
-    virtual String getName();
-    virtual float* getValue();
-    virtual String* getUnit();
-    virtual String* getDescription();
-    virtual uint8_t getNrOfValues();
-
-
+public:
+  Sensor();
+  virtual String getName();
+  virtual float *getValue();
+  virtual String *getUnit();
+  virtual String *getDescription();
+  virtual uint8_t getNrOfValues();
 };
 
 #endif

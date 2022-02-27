@@ -3,21 +3,12 @@
 
 #define DHTTYPE DHT11
 
-// using namespace std;
-
-
-
 DHT11Sensor::DHT11Sensor(String _name, uint8_t _pin)
-  : Sensor::Sensor()
-  , DHT::DHT(_pin, DHTTYPE)
+    : Sensor::Sensor(), DHT::DHT(_pin, DHTTYPE)
 {
-  Sensor sensor = Sensor();
   pin = _pin;
   name = _name;
   this->begin();
-//  DHT dht11sensor = DHT(pin, DHTTYPE);
-//  dht11sensor.begin();
-
 }
 
 String DHT11Sensor::getName()
@@ -25,22 +16,24 @@ String DHT11Sensor::getName()
   return name;
 }
 
-float* DHT11Sensor::getValue()
+float *DHT11Sensor::getValue()
 {
   this->value[0] = this->readTemperature();
   this->value[1] = this->readHumidity();
   return this->value;
 }
 
-String* DHT11Sensor::getUnit()
+String *DHT11Sensor::getUnit()
 {
   return this->unit;
 }
 
-String* DHT11Sensor::getDescription(){
+String *DHT11Sensor::getDescription()
+{
   return this->description;
 }
 
-uint8_t DHT11Sensor::getNrOfValues(){
+uint8_t DHT11Sensor::getNrOfValues()
+{
   return this->nrOfValues;
 }

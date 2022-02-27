@@ -15,11 +15,13 @@ void LCD20x4::printHello()
   delay(3000);
 }
 
-void LCD20x4::printTemplate(Sensor* _sensor){
- this->clear();
- this->setCursor(0, 0);
- this->print(_sensor->getName());
-  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++) {
+void LCD20x4::printTemplate(Sensor *_sensor)
+{
+  this->clear();
+  this->setCursor(0, 0);
+  this->print(_sensor->getName());
+  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
+  {
     this->setCursor(0, i + 2);
     this->print(_sensor->getDescription()[i] + ":");
     this->setCursor(18, i + 2);
@@ -27,11 +29,12 @@ void LCD20x4::printTemplate(Sensor* _sensor){
   }
 }
 
-void LCD20x4::printValue(Sensor* _sensor){
+void LCD20x4::printValue(Sensor *_sensor)
+{
 
-  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++) {
+  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
+  {
     this->setCursor(13, i + 2);
     this->print(_sensor->getValue()[i], 1);
   }
 }
-
