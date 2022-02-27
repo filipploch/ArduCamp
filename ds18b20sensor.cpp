@@ -5,7 +5,7 @@
 
 
 
-DS18B20Sensor::DS18B20Sensor(String _name, int _pin, int _idx)
+DS18B20Sensor::DS18B20Sensor(String _name, uint8_t _pin, uint8_t _idx)
   : Sensor::Sensor()
   , oneWire(_pin)
   , DallasTemperature::DallasTemperature(&this->oneWire)
@@ -37,6 +37,6 @@ String* DS18B20Sensor::getDescription(){
   return this->description;
 }
 
-int DS18B20Sensor::getNrOfValues(){
+uint8_t DS18B20Sensor::getNrOfValues(){
   return this->nrOfValues;
 }

@@ -17,7 +17,7 @@ class Sensor
     virtual float* getValue();
     virtual String* getUnit();
     virtual String* getDescription();
-    virtual int getNrOfValues();
+    virtual uint8_t getNrOfValues();
 
 
 };

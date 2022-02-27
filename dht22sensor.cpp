@@ -2,7 +2,7 @@
 #include "dht22sensor.hpp"
 
 
-DHT22Sensor::DHT22Sensor(String _name, int _pin)
+DHT22Sensor::DHT22Sensor(String _name, uint8_t _pin)
   : Sensor::Sensor()
   , DHT::DHT(_pin, DHTTYPE)
 {
@@ -33,6 +33,6 @@ String* DHT22Sensor::getDescription(){
   return this->description;
 }
 
-int DHT22Sensor::getNrOfValues(){
+uint8_t DHT22Sensor::getNrOfValues(){
   return this->nrOfValues;
 }

@@ -9,17 +9,17 @@ class DHT11Sensor : public Sensor
 {
     private:
         String name;
-        int pin;
-        static const int nrOfValues = 2;
+        uint8_t pin;
+        static const uint8_t nrOfValues = 2;
         float value[2];
         String unit[2] = {"*C", "%"};
         String description[2] = {"Temperatura", "Wilgotnosc"};
 
   	public:
-	    DHT11Sensor(String _name, int _pin);
+	    DHT11Sensor(String _name, uint8_t _pin);
 	    String getName();
 	    float* getValue();
 	    String* getUnit();
       String* getDescription();
-      int getNrOfValues();
+      uint8_t getNrOfValues();
 };

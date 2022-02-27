@@ -17,4 +17,4 @@
 
    String* Sensor::getUnit(){}
 
-   int Sensor::getNrOfValues(){}
+   uint8_t Sensor::getNrOfValues(){}

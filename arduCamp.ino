@@ -5,23 +5,29 @@
 
 
 
-const int forwardButtonPin = 10;
-const int backwardButtonPin = 11;
-const int ledPin =  13;
-const int nrOfSensors = 5;
+const uint8_t forwardButtonPin = 10;
+const uint8_t backwardButtonPin = 11;
+const uint8_t ledPin =  13;
+// const uint8_t nrOfSensors = 5;
 
-DHT22Sensor inTemp("W KAMPERZE", 7);
-DHT11Sensor outTemp("NA POLU", 8);
-DS18B20Sensor refrig1Temp("LODOWKA 1", 12, 0);
-DS18B20Sensor refrig2Temp("LODOWKA 2", 12, 1);
-DHT22Sensor waterLvl("ZBIORNIK WODY", 13);
+// DHT22Sensor inTemp("W KAMPERZE", 7);
+// DHT11Sensor outTemp("NA POLU", 8);
+// DS18B20Sensor refrig1Temp("LODOWKA 1", 12, 0);
+// DS18B20Sensor refrig2Temp("LODOWKA 2", 12, 1);
+// DHT22Sensor waterLvl("ZBIORNIK WODY", 13);
 
-Sensor* sensors[nrOfSensors] = {&inTemp, &outTemp, &refrig1Temp, &refrig2Temp, &waterLvl};
+// Sensor* sensors[nrOfSensors] = {&inTemp, &outTemp, &refrig1Temp, &refrig2Temp, &waterLvl};
+Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7),
+                     new DHT11Sensor("NA POLU", 8),
+                     new DS18B20Sensor("LODOWKA 1", 12, 0),
+                     new DS18B20Sensor("LODOWKA 2", 12, 1),
+                     new DHT22Sensor("ZBIORNIK WODY", 13)
+                     };
 
-int forwardButtonState;
-int backwardButtonState;
+uint8_t forwardButtonState;
+uint8_t backwardButtonState;
 bool isToChange = true;
-int sensorNr = 0;
+uint8_t sensorNr = 0;
 unsigned long measureTime = 0;
 unsigned long bLightTime = 0;
 
@@ -44,7 +50,7 @@ void setup() {
 
 }
 
-int switchSensor(int val){
+int8_t switchSensor(int8_t val){
 
   switch (val)
   {
@@ -52,7 +58,7 @@ int switchSensor(int val){
     return 0;
 
   case 1:
-    if (sensorNr == nrOfSensors - 1) {
+    if (sensorNr == sizeof(sensors)/sizeof(sensors[0]) - 1) {
         return 0;
       }
     else {
@@ -61,7 +67,7 @@ int switchSensor(int val){
 
   case -1:
     if (sensorNr == 0) {
-      return nrOfSensors - 1;
+      return sizeof(sensors)/sizeof(sensors[0]) - 1;
     }
     else return sensorNr + val;
 
@@ -71,7 +77,7 @@ int switchSensor(int val){
   }
 }
 
-void changeProgram(int val){
+void changeProgram(int8_t val){
     if (isToChange == true) {
       sensorNr = switchSensor(val);
       lcd.printTemplate(sensors[sensorNr]);

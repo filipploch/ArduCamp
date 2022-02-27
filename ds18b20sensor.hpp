@@ -10,9 +10,9 @@ class DS18B20Sensor : public Sensor
 {
     private:
         String name;
-        int pin;
-        int idx;
-        static const int nrOfValues = 1;
+        uint8_t pin;
+        uint8_t idx;
+        static const uint8_t nrOfValues = 1;
         float value[1];
         String unit[1] = {"*C"};
         String description[1] = {"Temperatura"};
@@ -20,10 +20,10 @@ class DS18B20Sensor : public Sensor
         DallasTemperature ds18b20sensor;
 
     public:
-      DS18B20Sensor(String _name, int _pin, int _idx);
+      DS18B20Sensor(String _name, uint8_t _pin, uint8_t _idx);
       String getName();
       float* getValue();
       String* getUnit();
       String* getDescription();
-      int getNrOfValues();
+      uint8_t getNrOfValues();
 };
