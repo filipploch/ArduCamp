@@ -12,4 +12,3 @@ float *Sensor::getValue() {}
 String *Sensor::getUnit() {}
 
 uint8_t Sensor::getNrOfValues() {}
-

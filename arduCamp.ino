@@ -8,7 +8,7 @@ const uint8_t backwardButtonPin = 11;
 const uint8_t ledPin = 13;
 
 Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7),
-                     new DHT11Sensor("NA POLU", 8),
+                     new DHT22Sensor("NA POLU", 8),
                      new DS18B20Sensor("LODOWKA 1", 12, 0),
                      new DS18B20Sensor("LODOWKA 2", 12, 1),
                      new DHT22Sensor("ZBIORNIK WODY", 13)};
@@ -16,19 +16,11 @@ Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7),
 uint8_t forwardButtonState;
 uint8_t backwardButtonState;
 bool isToChange = true;
-uint8_t sensorNr = 0;
-unsigned long measureTime = 0;
-unsigned long bLightTime = 0;
+uint8_t sensorNr;
+unsigned long measureTime;
+unsigned long bLightTime;
 
 LCD20x4 lcd(0x27);
-
-// void beginSensors()
-// {
-//   for (uint8_t i = 0; i < sizeof(sensors) / sizeof(sensors[0]) - 1; i++)
-//   {
-//     sensors[i]->begin();
-//   }
-// }
 
 int8_t switchSensor(int8_t val)
 {
@@ -84,15 +76,13 @@ void setup()
   Serial.begin(9600);
   pinMode(forwardButtonPin, INPUT_PULLUP);
   pinMode(backwardButtonPin, INPUT_PULLUP);
-  
-  // beginSensors();
 
   lcd.init();
   lcd.backlight();
 
   lcd.printHello();
-  lcd.printTemplate(sensors[0]);
-  lcd.printValue(sensors[0]);
+  lcd.printTemplate(sensors[sensorNr]);
+  lcd.printValue(sensors[sensorNr]);
   measureTime = millis();
   bLightTime = millis();
 }
