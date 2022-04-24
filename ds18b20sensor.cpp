@@ -15,10 +15,10 @@ String DS18B20Sensor::getName()
   return name;
 }
 
-float *DS18B20Sensor::getValue()
+String *DS18B20Sensor::getValue()
 {
   this->requestTemperatures();
-  this->value[0] = this->getTempCByIndex(this->idx);
+  this->value[0] = String(this->getTempCByIndex(this->idx), 1);
   return this->value;
 }
 

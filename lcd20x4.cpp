@@ -34,7 +34,20 @@ void LCD20x4::printValue(Sensor *_sensor)
 
   for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
   {
-    this->setCursor(13, i + 2);
-    this->print(_sensor->getValue()[i], 1);
+    this->setCursor(13 - _sensor->getValue()[i].length(), i + 2);
+    this->print("    ");
+    this->setCursor(17 - _sensor->getValue()[i].length(), i + 2);
+    this->print(_sensor->getValue()[i]);
+
   }
 }
+
+// void LCD20x4::printWarning(Sensor *_sensor)
+// {
+
+//   for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
+//   {
+//     this->setCursor(13, i + 2);
+//     this->print(_sensor->getWarning()[i]);
+//   }
+// }

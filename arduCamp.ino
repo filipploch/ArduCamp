@@ -1,17 +1,22 @@
 #include "lcd20x4.hpp"
 #include "dht22sensor.hpp"
-#include "dht11sensor.hpp"
+// #include "dht11sensor.hpp"
 #include "ds18b20sensor.hpp"
+#include "htrSensor.hpp"
+#include "voltageSensor.hpp"
 
 const uint8_t forwardButtonPin = 10;
 const uint8_t backwardButtonPin = 11;
-const uint8_t ledPin = 13;
+// const uint8_t ledPin = 13;
 
-Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7),
-                     new DHT22Sensor("NA POLU", 8),
-                     new DS18B20Sensor("LODOWKA 1", 12, 0),
-                     new DS18B20Sensor("LODOWKA 2", 12, 1),
-                     new DHT22Sensor("ZBIORNIK WODY", 13)};
+Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7)
+                     ,new DHT22Sensor("NA POLU", 8)
+                     ,new DS18B20Sensor("LODOWKA 1", 12, 0)
+                     ,new DS18B20Sensor("LODOWKA 2", 12, 1)
+                     ,new HTRSensor("ZBIORNIK WODY", A0, 8200, 25, 30)
+                     ,new VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500)
+                     ,new VoltageSensor("AKUMULATOR 2", A2, 5, 30000, 7500)
+                     };
 
 uint8_t forwardButtonState;
 uint8_t backwardButtonState;
@@ -106,13 +111,12 @@ void loop()
   }
   else
   {
-    digitalWrite(ledPin, LOW);
     isToChange = true;
   }
 
   if (millis() > (measureTime + 2500))
   {
-    lcd.printValue(sensors[sensorNr]);
+    lcd.printValue(sensors[sensorNr]); 
     measureTime = millis();
   }
 

@@ -7,8 +7,12 @@ String Sensor::getName() {}
 
 String *Sensor::getDescription() {}
 
-float *Sensor::getValue() {}
+String *Sensor::getValue() {}
 
 String *Sensor::getUnit() {}
+
+void Sensor::printValue() {}
+
+String *Sensor::getWarning() {}
 
 uint8_t Sensor::getNrOfValues() {}

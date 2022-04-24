@@ -7,13 +7,15 @@ class Sensor
 protected:
   String name;
   String unit;
-  float value;
+  String value;
 
 public:
   Sensor();
   virtual String getName();
-  virtual float *getValue();
+  virtual String *getValue();
   virtual String *getUnit();
+  virtual String *getWarning();
+  virtual void printValue();
   virtual String *getDescription();
   virtual uint8_t getNrOfValues();
 };

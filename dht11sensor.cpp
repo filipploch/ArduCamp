@@ -16,10 +16,10 @@ String DHT11Sensor::getName()
   return name;
 }
 
-float *DHT11Sensor::getValue()
+String *DHT11Sensor::getValue()
 {
-  this->value[0] = this->readTemperature();
-  this->value[1] = this->readHumidity();
+  this->value[0] = String(this->readTemperature(), 1);
+  this->value[1] = String(this->readHumidity(), 1);
   return this->value;
 }
 
