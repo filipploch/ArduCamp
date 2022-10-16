@@ -2,6 +2,7 @@
 #include "ds18b20sensor.hpp"
 #include "htrSensor.hpp"
 #include "voltageSensor.hpp"
+#include "view20x4.hpp"
 
 const uint8_t forwardButtonPin = 10;
 const uint8_t backwardButtonPin = 12;
@@ -17,13 +18,23 @@ Sensor acu2VoltSensor = VoltageSensor("AKUMULATOR 2", A3, 5, 30000, 7500);
 uint8_t forwardButtonState;
 uint8_t backwardButtonState;
 bool isToChange = true;
-uint8_t sensorNr;
+uint8_t viewNr;
 unsigned long measureTime;
 unsigned long bLightTime;
 
 LCD20x4 lcd(0x27);
 
-int8_t switchSensor(int8_t val)
+// String view1 = "VIEW1";
+// String view2 = "VIEW2";
+// String view3 = "VIEW3";
+// String view4 = "VIEW4";
+
+View *views[] = {
+                    new View20x4("VIEW 1"),
+                    new View20x4("VIEW 2"),
+                     };
+
+int8_t switchView(int8_t val)
 {
 
   switch (val)
@@ -32,22 +43,22 @@ int8_t switchSensor(int8_t val)
       return 0;
 
     case 1:
-      if (sensorNr == sizeof(sensors) / sizeof(sensors[0]) - 1)
+      if (viewNr == sizeof(views) / sizeof(views[0]) - 1)
       {
         return 0;
       }
       else
       {
-        return sensorNr + val;
+        return viewNr + val;
       }
 
     case -1:
-      if (sensorNr == 0)
+      if (viewNr == 0)
       {
-        return sizeof(sensors) / sizeof(sensors[0]) - 1;
+        return sizeof(views) / sizeof(views[0]) - 1;
       }
       else
-        return sensorNr + val;
+        return viewNr + val;
 
     default:
       return 0;
@@ -58,9 +69,9 @@ void changeProgram(int8_t val)
 {
   if (isToChange == true)
   {
-    sensorNr = switchSensor(val);
-    lcd.printTemplate(sensors[sensorNr]);
-    lcd.printValue(sensors[sensorNr]);
+    viewNr = switchView(val);
+    lcd.printTemplate(views[viewNr]);
+    lcd.printValue(views[viewNr]);
     measureTime = millis();
     bLightTime = millis();
     isToChange = false;
@@ -82,8 +93,8 @@ void setup()
   lcd.backlight();
 
   lcd.printHello();
-  lcd.printTemplate(sensors[sensorNr]);
-  lcd.printValue(sensors[sensorNr]);
+  lcd.printTemplate(views[viewNr]);
+  lcd.printValue(views[viewNr]);
   measureTime = millis();
   bLightTime = millis();
 }
@@ -112,7 +123,7 @@ void loop()
 
   if (millis() > (measureTime + 2500))
   {
-    lcd.printValue(sensors[sensorNr]); 
+    lcd.printValue(views[viewNr]); 
     measureTime = millis();
   }
 

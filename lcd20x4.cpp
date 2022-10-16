@@ -15,42 +15,31 @@ void LCD20x4::printHello()
   delay(3000);
 }
 
-void LCD20x4::printTemplate(Sensor *_sensor)
+void LCD20x4::printTemplate(View *_view)
 {
   this->clear();
   this->setCursor(0, 0);
-  this->print(_sensor->getName());
-  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
-  {
-    this->setCursor(0, i + 2);
-    this->print(_sensor->getDescription()[i] + ":");
-    this->setCursor(18, i + 2);
-    this->print(_sensor->getUnit()[i]);
-  }
+  this->print(_view->getName());
+  // for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
+  // {
+  //   this->setCursor(0, i + 2);
+  //   this->print(_sensor->getDescription()[i] + ":");
+  //   this->setCursor(18, i + 2);
+  //   this->print(_sensor->getUnit()[i]);
+  // }
 }
 
-void LCD20x4::printValue(Sensor *_sensor)
+void LCD20x4::printValue(View *_view)
 {
 
-  for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
-  {
-    // this->setCursor(1 + _sensor->getDescription()[i].length(), i + 2);
-    this->actualValue = _sensor->getValue()[i];
-    this->setCursor(13, i + 2);
-    this->print("    ");
-    // this->setCursor(17 - _sensor->getValue()[i].length(), i + 2);
-    this->setCursor(13, i + 2);
-    this->print(actualValue);
+  // for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
+  // {
+  //   this->actualValue = _sensor->getValue()[i];
+  //   this->setCursor(13, i + 2);
+  //   this->print("    ");
+  //   this->setCursor(13, i + 2);
+  //   this->print(actualValue);
 
-  }
+  // }
 }
 
-// void LCD20x4::printWarning(Sensor *_sensor)
-// {
-
-//   for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
-//   {
-//     this->setCursor(13, i + 2);
-//     this->print(_sensor->getWarning()[i]);
-//   }
-// }
