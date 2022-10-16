@@ -6,15 +6,13 @@
 const uint8_t forwardButtonPin = 10;
 const uint8_t backwardButtonPin = 12;
 
-Sensor *sensors[] = {
-                     new DS18B20Sensor("W KAMPERZE", 7, 0)
-                    ,new DS18B20Sensor("NA POLU", 6, 0)
-                    ,new DS18B20Sensor("LODOWKA", 11, 0)
-                    ,new DS18B20Sensor("ZAMRAZALNIK", 13, 0)
-                    ,new HTRSensor("ZBIORNIK WODY", A0, 190, 25, 30)
-                    ,new VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500)
-                    ,new VoltageSensor("AKUMULATOR 2", A3, 5, 30000, 7500)
-                     };
+Sensor inTempSensor = DS18B20Sensor("W KAMPERZE", 7, 0);
+Sensor outTempSensor = DS18B20Sensor("NA POLU", 6, 0);
+Sensor coolTempSensor = DS18B20Sensor("LODOWKA", 11, 0);
+Sensor refriTempSensor = DS18B20Sensor("ZAMRAZALNIK", 13, 0);
+Sensor waterTankSensor = HTRSensor("ZBIORNIK WODY", A0, 190, 25, 30);
+Sensor acu1VoltSensor = VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500);
+Sensor acu2VoltSensor = VoltageSensor("AKUMULATOR 2", A3, 5, 30000, 7500);
 
 uint8_t forwardButtonState;
 uint8_t backwardButtonState;
