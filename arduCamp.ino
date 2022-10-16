@@ -1,21 +1,19 @@
 #include "lcd20x4.hpp"
-#include "dht22sensor.hpp"
-// #include "dht11sensor.hpp"
 #include "ds18b20sensor.hpp"
 #include "htrSensor.hpp"
 #include "voltageSensor.hpp"
 
 const uint8_t forwardButtonPin = 10;
-const uint8_t backwardButtonPin = 11;
-// const uint8_t ledPin = 13;
+const uint8_t backwardButtonPin = 12;
 
-Sensor *sensors[] = {new DHT22Sensor("W KAMPERZE", 7)
-                     ,new DHT22Sensor("NA POLU", 8)
-                     ,new DS18B20Sensor("LODOWKA 1", 12, 0)
-                     ,new DS18B20Sensor("LODOWKA 2", 12, 1)
-                     ,new HTRSensor("ZBIORNIK WODY", A0, 8200, 25, 30)
-                     ,new VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500)
-                     ,new VoltageSensor("AKUMULATOR 2", A2, 5, 30000, 7500)
+Sensor *sensors[] = {
+                     new DS18B20Sensor("W KAMPERZE", 7, 0)
+                    ,new DS18B20Sensor("NA POLU", 6, 0)
+                    ,new DS18B20Sensor("LODOWKA", 11, 0)
+                    ,new DS18B20Sensor("ZAMRAZALNIK", 13, 0)
+                    ,new HTRSensor("ZBIORNIK WODY", A0, 190, 25, 30)
+                    ,new VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500)
+                    ,new VoltageSensor("AKUMULATOR 2", A3, 5, 30000, 7500)
                      };
 
 uint8_t forwardButtonState;
@@ -32,29 +30,29 @@ int8_t switchSensor(int8_t val)
 
   switch (val)
   {
-  case 0:
-    return 0;
-
-  case 1:
-    if (sensorNr == sizeof(sensors) / sizeof(sensors[0]) - 1)
-    {
+    case 0:
       return 0;
-    }
-    else
-    {
-      return sensorNr + val;
-    }
 
-  case -1:
-    if (sensorNr == 0)
-    {
-      return sizeof(sensors) / sizeof(sensors[0]) - 1;
-    }
-    else
-      return sensorNr + val;
+    case 1:
+      if (sensorNr == sizeof(sensors) / sizeof(sensors[0]) - 1)
+      {
+        return 0;
+      }
+      else
+      {
+        return sensorNr + val;
+      }
 
-  default:
-    return 0;
+    case -1:
+      if (sensorNr == 0)
+      {
+        return sizeof(sensors) / sizeof(sensors[0]) - 1;
+      }
+      else
+        return sensorNr + val;
+
+    default:
+      return 0;
   }
 }
 
@@ -120,10 +118,10 @@ void loop()
     measureTime = millis();
   }
 
-  if (millis() > (bLightTime + 10000))
+  if (millis() > (bLightTime + 20000))
   {
     lcd.noBacklight();
     isToChange = false;
   }
-  delay(100);
+  delay(200);
 }

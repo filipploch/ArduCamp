@@ -8,7 +8,7 @@ LCD20x4::LCD20x4(uint8_t lcd_Addr)
 void LCD20x4::printHello()
 {
   this->setCursor(0, 1);
-  this->print("    Hello Camper    ");
+  this->print("  Hello AG-Camper   ");
   delay(2000);
   this->setCursor(0, 3);
   this->print("feat. Devs-Mentoring");
@@ -34,10 +34,13 @@ void LCD20x4::printValue(Sensor *_sensor)
 
   for (uint8_t i = 0; i < _sensor->getNrOfValues(); i++)
   {
-    this->setCursor(13 - _sensor->getValue()[i].length(), i + 2);
+    // this->setCursor(1 + _sensor->getDescription()[i].length(), i + 2);
+    this->actualValue = _sensor->getValue()[i];
+    this->setCursor(13, i + 2);
     this->print("    ");
-    this->setCursor(17 - _sensor->getValue()[i].length(), i + 2);
-    this->print(_sensor->getValue()[i]);
+    // this->setCursor(17 - _sensor->getValue()[i].length(), i + 2);
+    this->setCursor(13, i + 2);
+    this->print(actualValue);
 
   }
 }

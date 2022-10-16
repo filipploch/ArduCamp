@@ -1,9 +1,9 @@
 #include "sensor.hpp"
 // #include <Arduino.h>
-#include <AceSorting.h>
-using ace_sorting::shellSortKnuth;
+// #include <AceSorting.h>
+// using ace_sorting::shellSortKnuth;
 
-#define RREF 330
+#define RREF 4700
 #define VIN 5
 #define RMAX 7000
 
@@ -27,10 +27,10 @@ public:
     String getName();
     String *getValue();
     String *getWarning();
-    void printValue();
+    // void printValue();
     String *getUnit();
     String *getDescription();
     uint8_t getNrOfValues();
     float readValue();
-    float getAverage(uint8_t _nrOfElements);
+    // float getAverage(uint8_t _nrOfElements);
 };

@@ -14,6 +14,7 @@ class LCD20x4 : public LiquidCrystal_I2C
 private:
     // uint8_t rows = 4;
     // uint8_t cols = 20;
+    String actualValue;
 public:
     LCD20x4(uint8_t lcd_Addr);
     void printHello();

@@ -18,7 +18,7 @@ String VoltageSensor::getName()
 
 String *VoltageSensor::getValue()
 {
-  this->value[0] = String(this->readVoltage());
+  this->value[0] = String(this->readVoltage(), 1);
 
   return this->value;
 }

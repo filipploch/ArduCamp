@@ -20,17 +20,17 @@ String HTRSensor::getName()
 
 String *HTRSensor::getValue()
 {
-  this->value[0] = String(this->getAverage(10));
+  this->value[0] = String(this->readValue(), 1);
   if (this->value[0].toInt() < 20){
     this->value[0] = " <20";
-    return this->value;    
+    // return this->value;    
   }
   return this->value;
 }
 
-void HTRSensor::printValue(){
+// void HTRSensor::printValue(){
   
-}
+// }
 
 float HTRSensor::readValue()
 {
@@ -48,38 +48,38 @@ float HTRSensor::readValue()
   return vPercent;
 }
 
-float HTRSensor::getAverage(uint8_t _nrOfElements)
-{
-  float elements[_nrOfElements] = {};
-  float elementsSum = 0;
-  int divider = 0;
+// float HTRSensor::getAverage(uint8_t _nrOfElements)
+// {
+//   float elements[_nrOfElements] = {};
+//   float elementsSum = 0;
+//   int divider = 0;
 
-  for (uint8_t i = 0; i < _nrOfElements; i++)
-  {
-    elements[i] = this->readValue();
-    delay(3);
-  }
-  shellSortKnuth(elements, _nrOfElements);
-  for (uint8_t i = 0; i < _nrOfElements; i++)
-  {
-    if ( elements[i] >= elements[_nrOfElements/2 - 1] * 0.9 && 
-        elements[i] <= elements[_nrOfElements/2 - 1] * 1.1)
-    {
-      elementsSum += elements[i];
-      divider += 1; 
-    }
-  }
-  if (divider > 0){
-    return elementsSum / divider;
-  }
-}
+//   for (uint8_t i = 0; i < _nrOfElements; i++)
+//   {
+//     elements[i] = this->readValue();
+//     delay(3);
+//   }
+//   shellSortKnuth(elements, _nrOfElements);
+//   for (uint8_t i = 0; i < _nrOfElements; i++)
+//   {
+//     if ( elements[i] >= elements[_nrOfElements/2 - 1] * 0.9 && 
+//         elements[i] <= elements[_nrOfElements/2 - 1] * 1.1)
+//     {
+//       elementsSum += elements[i];
+//       divider += 1; 
+//     }
+//   }
+//   if (divider > 0){
+//     return elementsSum / divider;
+//   }
+// }
 
-float sort_desc(const void *cmp1, const void *cmp2)
-{
-  int a = *((int *)cmp1);
-  int b = *((int *)cmp2);
-  return a > b ? -1 : (a < b ? 1 : 0);
-}
+// float sort_desc(const void *cmp1, const void *cmp2)
+// {
+//   int a = *((int *)cmp1);
+//   int b = *((int *)cmp2);
+//   return a > b ? -1 : (a < b ? 1 : 0);
+// }
 
 
 String *HTRSensor::getUnit()
