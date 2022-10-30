@@ -19,7 +19,7 @@ public:
   virtual String *getWarnings();
   virtual void printValue();
   virtual String *getDescriptions();
-  virtual uint8_t getNrOfValues();
+  virtual uint8_t getNrOfSensors();
 };
 
 #endif

@@ -11,13 +11,12 @@ Sensor* sensors1[] = {
     new DS18B20Sensor("W KAMPERZE", 7, 0),
     new DS18B20Sensor("NA POLU", 6, 0),
     new DS18B20Sensor("LODOWKA", 11, 0),
-    new DS18B20Sensor("ZAMRAZALNIK", 13, 0)
+    new DS18B20Sensor("ZAMRAZALNIK", 13, 0),
 };
 Sensor* sensors2[] = {
     new HTRSensor("WODA", A0, 190, 25, 30),
     new VoltageSensor("AKU. AUTO", A1, 5, 30000, 7500),
-    new VoltageSensor("AKU. DOM", A3, 5, 30000, 7500)
-    
+    new VoltageSensor("AKU. DOM", A3, 5, 30000, 7500),
 };
 
 uint8_t forwardButtonState;

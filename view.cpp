@@ -18,4 +18,4 @@ void View::printValue() {}
 
 String *View::getWarnings() {}
 
-uint8_t View::getNrOfValues() {}
+uint8_t View::getNrOfSensors() {}

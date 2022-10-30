@@ -31,5 +31,5 @@ public:
     // String *getWarning();
     String *getUnits();
     String *getDescriptions();
-    uint8_t getNrOfValues();
+    uint8_t getNrOfSensors();
 };

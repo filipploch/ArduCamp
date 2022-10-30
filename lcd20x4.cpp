@@ -18,7 +18,7 @@ void LCD20x4::printHello()
 void LCD20x4::printTemplate(View *_view)
 {
   this->clear();
-  for (uint8_t i = 0; i < _view->getNrOfValues(); i++)
+  for (uint8_t i = 0; i < _view->getNrOfSensors(); i++)
   {
     this->setCursor(0, i);
     this->print(_view->getNames()[i] + ":");
@@ -30,7 +30,7 @@ void LCD20x4::printTemplate(View *_view)
 void LCD20x4::printValue(View *_view)
 {
   _view->setValues();
-  for (int i = 0; i < _view->getNrOfValues(); i++)
+  for (int i = 0; i < _view->getNrOfSensors(); i++)
   {
     this->actualValue = _view->getValues()[i];
     this->setCursor(_view->getNames()[i].length() + 1, i);

@@ -13,7 +13,7 @@ View20x4::View20x4(Sensor * _sensors[], uint8_t _size)
 }
 void View20x4::setSensors(Sensor* _sensors[])
 {
-    for (int i = 0; i<this->getNrOfValues(); i++){
+    for (int i = 0; i<this->getNrOfSensors(); i++){
       this->sensors[i] = _sensors[i];
     }
 }
@@ -21,14 +21,14 @@ void View20x4::setSensors(Sensor* _sensors[])
 
 void View20x4::setNames(Sensor* _sensors[])
 {
-    for (int i = 0; i<this->getNrOfValues(); i++){
+    for (int i = 0; i<this->getNrOfSensors(); i++){
       this->names[i] = _sensors[i]->getName();
     }
 }
 
 void View20x4::setUnits(Sensor* _sensors[])
 {
-    for (int i = 0; i<this->getNrOfValues(); i++){
+    for (int i = 0; i<this->getNrOfSensors(); i++){
       this->units[i] = _sensors[i]->getUnit();
     }
 }
@@ -36,7 +36,7 @@ void View20x4::setUnits(Sensor* _sensors[])
 // void View20x4::setValues(Sensor* _sensors[])
 void View20x4::setValues()
 {
-    for (int i = 0; i<this->getNrOfValues(); i++){
+    for (int i = 0; i<this->getNrOfSensors(); i++){
       this->values[i] = sensors[i]->getValue();
     }
 }
@@ -106,7 +106,7 @@ String *View20x4::getDescriptions()
   return this->descriptions;
 }
 
-uint8_t View20x4::getNrOfValues()
+uint8_t View20x4::getNrOfSensors()
 {
   return this->nrOfValues;
 }
