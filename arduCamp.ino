@@ -7,13 +7,18 @@
 const uint8_t forwardButtonPin = 10;
 const uint8_t backwardButtonPin = 12;
 
-Sensor inTempSensor = DS18B20Sensor("W KAMPERZE", 7, 0);
-Sensor outTempSensor = DS18B20Sensor("NA POLU", 6, 0);
-Sensor coolTempSensor = DS18B20Sensor("LODOWKA", 11, 0);
-Sensor refriTempSensor = DS18B20Sensor("ZAMRAZALNIK", 13, 0);
-Sensor waterTankSensor = HTRSensor("ZBIORNIK WODY", A0, 190, 25, 30);
-Sensor acu1VoltSensor = VoltageSensor("AKUMULATOR 1", A1, 5, 30000, 7500);
-Sensor acu2VoltSensor = VoltageSensor("AKUMULATOR 2", A3, 5, 30000, 7500);
+Sensor* sensors1[] = {
+    new DS18B20Sensor("W KAMPERZE", 7, 0),
+    new DS18B20Sensor("NA POLU", 6, 0),
+    new DS18B20Sensor("LODOWKA", 11, 0),
+    new DS18B20Sensor("ZAMRAZALNIK", 13, 0)
+};
+Sensor* sensors2[] = {
+    new HTRSensor("WODA", A0, 190, 25, 30),
+    new VoltageSensor("AKU. AUTO", A1, 5, 30000, 7500),
+    new VoltageSensor("AKU. DOM", A3, 5, 30000, 7500)
+    
+};
 
 uint8_t forwardButtonState;
 uint8_t backwardButtonState;
@@ -24,15 +29,12 @@ unsigned long bLightTime;
 
 LCD20x4 lcd(0x27);
 
-// String view1 = "VIEW1";
-// String view2 = "VIEW2";
-// String view3 = "VIEW3";
-// String view4 = "VIEW4";
 
 View *views[] = {
-                    new View20x4("VIEW 1"),
-                    new View20x4("VIEW 2"),
+                    new View20x4(sensors1, 4),
+                    new View20x4(sensors2, 3),
                      };
+
 
 int8_t switchView(int8_t val)
 {

@@ -2,47 +2,60 @@
 #include "view20x4.hpp"
 
 
-View20x4::View20x4(String _name)
-
+View20x4::View20x4(Sensor * _sensors[], uint8_t _size)
 {
-  name = _name;
+  this->setSensors(_sensors);
+  this->nrOfValues = _size;
+  this->setNames(_sensors);
+  this->setUnits(_sensors);
+
 
 }
-
-String View20x4::getName()
+void View20x4::setSensors(Sensor* _sensors[])
 {
-  return name;
+    for (int i = 0; i<this->getNrOfValues(); i++){
+      this->sensors[i] = _sensors[i];
+    }
 }
 
-// String *View20x4::getValue()
-// {
-//   this->value[0] = String(this->readValue(), 1);
-//   if (this->value[0].toInt() < 20){
-//     this->value[0] = " <20";
-//     // return this->value;    
-//   }
-//   return this->value;
-// }
 
-// // void View20x4::printValue(){
-  
-// // }
+void View20x4::setNames(Sensor* _sensors[])
+{
+    for (int i = 0; i<this->getNrOfValues(); i++){
+      this->names[i] = _sensors[i]->getName();
+    }
+}
 
-// float View20x4::readValue()
-// {
-//   int sensorValue=analogRead(pin);
-//   float Vout=sensorValue*(5.0/1023.0);
-//   float actualResistance = RREF * (1 / ((VIN / Vout) - 1));
-//   float rFactor = actualResistance/this->maxResist;
-//   float vFactor = (this->sensorLen/this->fuelHeight);
-//   float vPercent = ((rFactor * this->sensorLen + this->reserve)/this->fuelHeight)*100;
+void View20x4::setUnits(Sensor* _sensors[])
+{
+    for (int i = 0; i<this->getNrOfValues(); i++){
+      this->units[i] = _sensors[i]->getUnit();
+    }
+}
 
-//   if (vPercent > 99.0)
-//   {
-//     return 100;
-//   }
-//   return vPercent;
-// }
+// void View20x4::setValues(Sensor* _sensors[])
+void View20x4::setValues()
+{
+    for (int i = 0; i<this->getNrOfValues(); i++){
+      this->values[i] = sensors[i]->getValue();
+    }
+}
+
+String* View20x4::getNames()
+{
+  return this->names;
+}
+
+String *View20x4::getValues()
+{
+  // this->value[0] = String(this->readValue(), 1);
+  // if (this->value[0].toInt() < 20){
+  //   this->value[0] = " <20";
+  //   // return this->value;    
+  // }
+  return this->values;
+}
+
 
 // // float View20x4::getAverage(uint8_t _nrOfElements)
 // // {
@@ -78,22 +91,22 @@ String View20x4::getName()
 // // }
 
 
-// String *View20x4::getUnit()
-// {
-//   return this->unit;
-// }
+String *View20x4::getUnits()
+{
+  return this->units;
+}
 
 // String *View20x4::getWarning()
 // {
 //   return this->warning;
 // }
 
-// String *View20x4::getDescription()
-// {
-//   return this->description;
-// }
+String *View20x4::getDescriptions()
+{
+  return this->descriptions;
+}
 
-// uint8_t View20x4::getNrOfValues()
-// {
-//   return this->nrOfValues;
-// }
+uint8_t View20x4::getNrOfValues()
+{
+  return this->nrOfValues;
+}

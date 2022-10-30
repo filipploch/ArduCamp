@@ -11,12 +11,14 @@ protected:
 
 public:
   View();
-  virtual String getName();
-  virtual String *getValue();
-  virtual String *getUnit();
-  virtual String *getWarning();
+  virtual void setNames();
+  virtual void setValues();
+  virtual String *getNames();
+  virtual String *getValues();
+  virtual String *getUnits();
+  virtual String *getWarnings();
   virtual void printValue();
-  virtual String *getDescription();
+  virtual String *getDescriptions();
   virtual uint8_t getNrOfValues();
 };
 

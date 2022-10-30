@@ -16,9 +16,9 @@ String VoltageSensor::getName()
   return name;
 }
 
-String *VoltageSensor::getValue()
+String VoltageSensor::getValue()
 {
-  this->value[0] = String(this->readVoltage(), 1);
+  this->value = String(this->readVoltage(), 1);
 
   return this->value;
 }
@@ -42,12 +42,12 @@ float VoltageSensor::readVoltage(){
   return voltage;
 }
 
-String *VoltageSensor::getUnit()
+String VoltageSensor::getUnit()
 {
   return this->unit;
 }
 
-String *VoltageSensor::getDescription()
+String VoltageSensor::getDescription()
 {
   return this->description;
 }

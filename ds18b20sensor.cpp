@@ -15,19 +15,19 @@ String DS18B20Sensor::getName()
   return name;
 }
 
-String *DS18B20Sensor::getValue()
+String DS18B20Sensor::getValue()
 {
   this->requestTemperatures();
-  this->value[0] = String(this->getTempCByIndex(this->idx), 1);
+  this->value = String(this->getTempCByIndex(this->idx), 1);
   return this->value;
 }
 
-String *DS18B20Sensor::getUnit()
+String DS18B20Sensor::getUnit()
 {
   return this->unit;
 }
 
-String *DS18B20Sensor::getDescription()
+String DS18B20Sensor::getDescription()
 {
   return this->description;
 }

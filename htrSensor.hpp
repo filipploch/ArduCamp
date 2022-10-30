@@ -17,19 +17,19 @@ private:
     uint8_t sensorLen;
     uint8_t reserve;
     static const uint8_t nrOfValues = 1;
-    String value[1];
-    String unit[1] = {"%"};
-    String warning[1] = {" <20"};
-    String description[1] = {"Pozostalo"};
+    String value;
+    String unit = "%";
+    String warning = " <20";
+    String description = "Pozostalo";
     
 public:
     HTRSensor(String _name, uint8_t _pin, int _maxResist, uint8_t _sensorLen, uint8_t _fuelHeight);
     String getName();
-    String *getValue();
-    String *getWarning();
+    String getValue();
+    String getWarning();
     // void printValue();
-    String *getUnit();
-    String *getDescription();
+    String getUnit();
+    String getDescription();
     uint8_t getNrOfValues();
     float readValue();
     // float getAverage(uint8_t _nrOfElements);

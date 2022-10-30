@@ -12,11 +12,11 @@ protected:
 public:
   Sensor();
   virtual String getName();
-  virtual String *getValue();
-  virtual String *getUnit();
-  virtual String *getWarning();
+  virtual String getValue();
+  virtual String getUnit();
+  virtual String getWarning();
   virtual void printValue();
-  virtual String *getDescription();
+  virtual String getDescription();
   virtual uint8_t getNrOfValues();
 };
 

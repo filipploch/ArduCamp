@@ -2,7 +2,7 @@
 // #include <Arduino.h>
 // #include <AceSorting.h>
 // using ace_sorting::shellSortKnuth;
-
+#include "sensor.hpp"
 
 #define RREF 4700
 #define VIN 5
@@ -11,25 +11,25 @@
 class View20x4 : public View
 {
 private:
-    String name;
-    uint8_t pin;
-    uint8_t fuelHeight;
-    float maxResist;
-    uint8_t sensorLen;
-    uint8_t reserve;
-    static const uint8_t nrOfValues = 1;
-    String value[1];
-    String unit[1] = {"%"};
-    String warning[1] = {" <20"};
-    String description[1] = {"Pozostalo"};
+    uint8_t nrOfValues;
+    String names[4];
+    
+    String values[4];
+    String units[4];
+    String descriptions[4];
+    Sensor* sensors[4];
+
     
 public:
-    View20x4(String _name);
-    String getName();
-    // String *getValue();
+    View20x4(Sensor * _sensors[], uint8_t _size);
+    String *getNames();
+    void setNames(Sensor **);
+    void setSensors(Sensor **);
+    void setValues();
+    void setUnits(Sensor **);
+    String *getValues();
     // String *getWarning();
-    // String *getUnit();
-    // String *getDescription();
-    // uint8_t getNrOfValues();
-    // float readValue();
+    String *getUnits();
+    String *getDescriptions();
+    uint8_t getNrOfValues();
 };

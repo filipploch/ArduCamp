@@ -18,11 +18,11 @@ String HTRSensor::getName()
   return name;
 }
 
-String *HTRSensor::getValue()
+String HTRSensor::getValue()
 {
-  this->value[0] = String(this->readValue(), 1);
-  if (this->value[0].toInt() < 20){
-    this->value[0] = " <20";
+  this->value = String(this->readValue(), 1);
+  if (this->value.toInt() < 20){
+    this->value = " <20";
     // return this->value;    
   }
   return this->value;
@@ -82,17 +82,17 @@ float HTRSensor::readValue()
 // }
 
 
-String *HTRSensor::getUnit()
+String HTRSensor::getUnit()
 {
   return this->unit;
 }
 
-String *HTRSensor::getWarning()
+String HTRSensor::getWarning()
 {
   return this->warning;
 }
 
-String *HTRSensor::getDescription()
+String HTRSensor::getDescription()
 {
   return this->description;
 }

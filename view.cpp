@@ -2,16 +2,20 @@
 
 View::View() {}
 
-String View::getName() {}
+void View::setNames() {}
 
-String *View::getDescription() {}
+void View::setValues() {}
 
-String *View::getValue() {}
+String *View::getNames() {}
 
-String *View::getUnit() {}
+String *View::getDescriptions() {}
+
+String *View::getValues() {}
+
+String *View::getUnits() {}
 
 void View::printValue() {}
 
-String *View::getWarning() {}
+String *View::getWarnings() {}
 
 uint8_t View::getNrOfValues() {}

@@ -10,18 +10,18 @@ private:
     uint8_t pin;
     uint8_t idx;
     static const uint8_t nrOfValues = 1;
-    String value[1];
-    String unit[1] = {"*C"};
-    String description[1] = {"Temperatura"};
+    String value;
+    String unit = "*C";
+    String description = "Temperatura";
     OneWire oneWire;
     DallasTemperature ds18b20sensor;
 
 public:
     DS18B20Sensor(String _name, uint8_t _pin, uint8_t _idx);
     String getName();
-    String *getValue();
-    String *getUnit();
-    String *getDescription();
+    String getValue();
+    String getUnit();
+    String getDescription();
     uint8_t getNrOfValues();
     void begin();
 };
